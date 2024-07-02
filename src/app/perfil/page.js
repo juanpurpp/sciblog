@@ -25,9 +25,11 @@ const Componente = () => {
       console.error('No se pudo copiar el texto');
     });
   };
+  const publicaciones_query = useQuery("publicaciones", async () => await Axios.get('/estudios/guardados'))
   const session = useSession()
   const mis_publicaciones = useQuery("mis_publicaciones", async () => await Axios.get(`/estudios/byUser/${session.data.usuario.id}`))
   const {data, status} = useSession()
+  console.log('pg', publicaciones_query)
   if(status != 'authenticated') return <div className="w-full h-44 flex justify-center items-center">
     <p className="text-center align-middle text-4xl text-slate-800 font-semibold w-full"> Debe iniciar sesión para ver su perfil</p>
   </div>
@@ -103,18 +105,14 @@ const Componente = () => {
                   Publicaciones Guardadas
                 </Button>
               </DropdownTrigger>
+             
               <DropdownMenu>
-                <DropdownItem key="new" href="/#">Publicación</DropdownItem>
-                <DropdownItem key="copy" href="/#">Publicación</DropdownItem>
-                <DropdownItem key="new" href="/#">Publicación</DropdownItem>
-                <DropdownItem key="copy" href="/#">Publicación</DropdownItem>
-                <DropdownItem key="new" href="/#">Publicación</DropdownItem>
-                <DropdownItem key="copy" href="/#">Publicación</DropdownItem>
-                <DropdownItem key="new" href="/#">Publicación</DropdownItem>
-                <DropdownItem key="copy" href="/#">Publicación</DropdownItem>
-                <DropdownItem key="new" href="/#">Publicación</DropdownItem>
-                <DropdownItem key="copy" href="/#">Publicación</DropdownItem>
+                {!publicaciones_query.isLoading && publicaciones_query?.data?.data.map((guardado) => (
+                  <DropdownItem key={guardado.estudio.id} href={`/publicacion/${guardado.estudio.id}`}>{guardado.estudio.titulo}</DropdownItem>
+                ))}
               </DropdownMenu>
+              
+             
             </Dropdown>
           </div>
           <div className="flex w-1/2 justify-center">

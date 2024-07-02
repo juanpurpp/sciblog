@@ -18,9 +18,21 @@ model Usuario {
   updateAt             DateTime  @updatedAt
   temas                Tema[]
   estudios             Estudio[]
+  guardados             Guardados[]
+  comentarios          Comentario[]
+  respuestas           Respuesta[]
   //useridfk Usuario @relation(fields: [id], references: [id])
 }
 
+model Guardados {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  estudioId Int
+  usuario   Usuario  @relation(fields: [userId], references: [id])
+  estudio   Estudio  @relation(fields: [estudioId], references: [id])
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
 model Dataset {
   id            Int      @id @default(autoincrement())
   titulo        String?
@@ -41,6 +53,7 @@ model Estudio {
   enlace          String?
   userId          Int
   usuario_creador Usuario      @relation(fields: [userId], references: [id])
+  guardados       Guardados[]
   createdAt       DateTime     @default(now()) //Fecha Creación
   updateAt        DateTime     @updatedAt
 }
@@ -53,6 +66,8 @@ model Comentario {
   estudio    Estudio?    @relation(fields: [estudioId], references: [id])
   temaId     Int?
   tema       Tema?       @relation(fields: [temaId], references: [id])
+  usuarioId  Int
+  usuario    Usuario     @relation(fields: [usuarioId], references: [id])
   respuestas Respuesta[]
   createdAt  DateTime    @default(now())
   updateAt   DateTime    @updatedAt
@@ -63,6 +78,8 @@ model Respuesta {
   content      String?
   comentarioId Int
   comentario   Comentario @relation(fields: [comentarioId], references: [id])
+  usuarioId  Int
+  usuario    Usuario     @relation(fields: [usuarioId], references: [id])
   createdAt    DateTime   @default(now())
   updateAt     DateTime   @updatedAt
 }

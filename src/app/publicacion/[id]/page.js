@@ -26,8 +26,16 @@ export default function Component({params}) {
       console.error('No se pudo copiar el texto');
     });
   };
-  console.log(session?.data?.usuario.id)
-  console.log(data?.data?.usuario_creador.id)
+
+  const guardarMutation = useMutation(async (data) => await Axios.post('/estudios/guardados', data),
+    {
+      onSuccess: () => setModalThreeOpen(true)
+    })
+  const handleGuardar = async () => {
+    guardarMutation.mutate(
+      {estudio_id: params.id}
+    )
+  }
   const router = useRouter()
   const borrar = useMutation(async () => await Axios.delete(`/estudios/${params.id}`), {onSuccess: () => router.push('/')})
   if(isLoading) return <div>Cargando...</div>
@@ -91,15 +99,19 @@ export default function Component({params}) {
               </ModalBody>
             </ModalContent>
           </Modal>
-          <Button
-            auto
-            rounded
-            className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white dark:bg-blue-700 dark:hover:bg-blue-800"
-            onPress={() => setModalThreeOpen(true)}
-          >
-            Guardar Publicación
-            <BookmarkIcon className="h-5 w-5 ml-2" />
-          </Button>
+          {
+            session.data && (
+              <Button
+                auto
+                rounded
+                className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white dark:bg-blue-700 dark:hover:bg-blue-800"
+                onPress={handleGuardar}
+              >
+                Guardar Publicación
+                <BookmarkIcon className="h-5 w-5 ml-2" />
+              </Button>
+            )
+          }
           <Modal isOpen={isModalThreeOpen} onOpenChange={setModalThreeOpen}>
             <ModalContent className='bg-azul'>
               <ModalHeader className="dark:text-white">Publicacion Guardada</ModalHeader>
