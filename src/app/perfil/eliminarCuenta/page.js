@@ -8,7 +8,7 @@ export default function Component() {
     const { isOpen, onOpenChange } = useDisclosure();
 
     return ( 
-        <div className="flex h-full w-full items-center justify-center bg-background  px-4">
+        <div className="flex h-full w-full items-center justify-center bg-background px-4">
             <div className="w-full max-w-lg rounded-lg p-8 shadow-lg border border-gray-300 bg-azul">
                 <h2 className="mb-4 text-2xl text-foreground font-bold ">Deshabilitar cuenta</h2>
                 <p className="mb-6 text-foreground ">
