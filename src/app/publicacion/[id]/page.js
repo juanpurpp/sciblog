@@ -114,7 +114,7 @@ export default function Component({params}) {
         </label>
       </div>
       {
-        session.data.usuario.id == data.data.usuario_creador.id && (
+        (session.data && session.data.usuario.id == data.data.usuario_creador.id) && (
           <Button type='button' onClick={()=>borrar.mutate()} color='danger'>Borrar publicación</Button>
         )
       }  
