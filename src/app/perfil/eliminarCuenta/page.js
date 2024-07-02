@@ -8,15 +8,15 @@ export default function Component() {
     const { isOpen, onOpenChange } = useDisclosure();
 
     return ( 
-        <div className="flex h-full w-full items-center justify-center bg-background dark:bg-[#323048] px-4">
+        <div className="flex h-full w-full items-center justify-center bg-background  px-4">
             <div className="w-full max-w-lg rounded-lg p-8 shadow-lg border border-gray-300 bg-azul">
-                <h2 className="mb-4 text-2xl text-foreground font-bold dark:text-white">Deshabilitar cuenta</h2>
+                <h2 className="mb-4 text-2xl text-foreground font-bold ">Deshabilitar cuenta</h2>
                 <p className="mb-6 text-foreground ">
                     Ingresa tu correo electrónico y contraseña para confirmar la eliminación de tu cuenta.
                 </p>
                 <form onSubmit={(e) => e.preventDefault()}>
                     <div>
-                        <label className="mb-2 block text-sm font-medium text-foreground dark:text-gray-300" htmlFor="email">
+                        <label className="mb-2 block text-sm font-medium text-foreground " htmlFor="email">
                             Correo electrónico
                         </label>
                         <input
@@ -27,7 +27,7 @@ export default function Component() {
                         />
                     </div>
                     <div>
-                        <label className="mb-2 block text-sm font-medium text-foreground dark:text-gray-300" htmlFor="password">
+                        <label className="mb-2 block text-sm font-medium text-foreground " htmlFor="password">
                             Contraseña
                         </label>
                         <input
@@ -38,7 +38,7 @@ export default function Component() {
                         />
                     </div>
                     <Button
-                        className="w-full mb-2 mt-4 rounded-md bg-[#3f3d56] px-4 py-2 text-white hover:bg-[#2f2c44] focus:outline-none focus:ring-2 focus:ring-[#3f3d56] focus:ring-offset-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                        className="w-full mb-2 mt-4 rounded-md bg-[#4a476b] px-4 py-2 text-white hover:bg-[#2f2c44] focus:outline-none focus:ring-2 focus:ring-[#3f3d56] focus:ring-offset-2 "
                         type="submit"
                         onPress={() => onOpenChange(true)}
                     >
@@ -49,7 +49,7 @@ export default function Component() {
                         <Button
                             auto
                             rounded
-                            className="w-full bg-red-500 hover:bg-red-600 dark:bg-red-700 dark:hover:bg-red-800"
+                            className="text-white w-full bg-red-500 hover:bg-red-600 dark:bg-red-700 dark:hover:bg-red-800"
                         >
                             Cancelar
                         </Button>
