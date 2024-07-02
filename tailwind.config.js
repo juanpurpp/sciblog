@@ -48,10 +48,11 @@ module.exports = {
             'on-secondary': '#EFEBFE',
             'tarjeta':'#4c1d95',
             'purpura':'#6b21a8',
-            'azul':'#172554',
+            'azul':'#7f1d1d',
             'violeta':'#6b21a8',
             'plomo':'#3f3d56',
             'negroblanco':'#020617',
+           
 
             background: "#07091E", // or DEFAULT
             foreground: "#ECEDEE", // or 50 to 900 DEFAULT

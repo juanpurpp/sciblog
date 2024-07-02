@@ -26,7 +26,7 @@ export default function CommentsModal() {
             </Button>
 
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-                <ModalContent>
+                <ModalContent className='bg-azul'>
                     <ModalHeader>Comentarios</ModalHeader>
                     <ModalBody>
                         {currentComments.map((comment, index) => (

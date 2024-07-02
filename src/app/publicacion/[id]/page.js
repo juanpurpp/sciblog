@@ -79,10 +79,10 @@ export default function Component({params}) {
           </Button>
           <Modal isOpen={isModalTwoOpen} onOpenChange={setModalTwoOpen}>
             <ModalContent>
-              <ModalHeader className="flex flex-col dark:bg-slate-800 bg-azul dark:text-white">Compartir Enlace</ModalHeader>
-              <ModalBody className='dark:bg-slate-700 bg-azul'>
+              <ModalHeader className="flex flex-col bg-azul text-blanconegro">Compartir Enlace</ModalHeader>
+              <ModalBody className='bg-azul'>
                 <label
-                  className="text-md text-gray-800  mb-4 cursor-pointer dark:text-gray-300"
+                  className="text-md text-blanconegro mb-4 cursor-pointer "
                   onClick={() => copyToClipboard(window.location.href)}
                 >
                   {window.location.href}
