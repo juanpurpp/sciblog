@@ -23,6 +23,9 @@ export default {
     return await prisma.Tema.findMany({
       include:{
         usuario_tema: true
+      },
+      orderBy: {
+        createdAt: 'desc'
       }
     })
   },
@@ -32,6 +35,7 @@ export default {
       where: {
         id:idT,
       },
+      
     });
   }
   

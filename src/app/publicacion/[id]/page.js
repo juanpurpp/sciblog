@@ -40,15 +40,15 @@ export default function Component({params}) {
   const borrar = useMutation(async () => await Axios.delete(`/estudios/${params.id}`), {onSuccess: () => router.push('/')})
   if(isLoading) return <div>Cargando...</div>
   return (
-    <div className="bg-background dark:bg-gray-950 p-8 w-full">
+    <div className="bg-background p-8 w-full">
       <div className="flex w-full">
         <div className="w-1/3">
-          <div className="font-bold text-lg dark:text-white">{data.data.usuario_creador.nombre + ' ' +data.data.usuario_creador.apellido }</div>
-          <div className="text-sm dark:text-gray-300">{data.data.usuario_creador.area_especializacion}</div>
-          <div className="text-sm dark:text-gray-300">{data.data.usuario_creador.organizacion}</div>
+          <div className="font-bold text-lg">{data.data.usuario_creador.nombre + ' ' +data.data.usuario_creador.apellido }</div>
+          <div className="text-sm">{data.data.usuario_creador.area_especializacion}</div>
+          <div className="text-sm ">{data.data.usuario_creador.organizacion}</div>
         </div>
         <div className="flex w-1/3 justify-center">
-          <h2 className="mb-4 text-2xl font-bold dark:text-white">{data.data.titulo}</h2>
+          <h2 className="mb-4 text-2xl font-bold ">{data.data.titulo}</h2>
         </div>
         <div className="w-1/3 flex justify-end items-start space-x-2">
           <Button
@@ -72,7 +72,7 @@ export default function Component({params}) {
       </div>
       <div className="flex w-full mb-4 space-x-4">
         <div className="flex-grow">
-          <label htmlFor="description" className="text-md font-medium text-foreground dark:text-gray-300">Descripción</label>
+          <label htmlFor="description" className="text-md font-medium text-foreground ">Descripción</label>
         </div>
 
         <div className="flex space-x-2">
@@ -87,10 +87,10 @@ export default function Component({params}) {
           </Button>
           <Modal isOpen={isModalTwoOpen} onOpenChange={setModalTwoOpen}>
             <ModalContent>
-              <ModalHeader className="flex flex-col dark:bg-slate-800 bg-azul dark:text-white">Compartir Enlace</ModalHeader>
-              <ModalBody className='dark:bg-slate-700 bg-azul'>
+              <ModalHeader className="flex flex-col bg-azul text-blanconegro">Compartir Enlace</ModalHeader>
+              <ModalBody className='bg-azul'>
                 <label
-                  className="text-md text-gray-800  mb-4 cursor-pointer dark:text-gray-300"
+                  className="text-md text-blanconegro mb-4 cursor-pointer "
                   onClick={() => copyToClipboard(window.location.href)}
                 >
                   {window.location.href}
@@ -121,7 +121,7 @@ export default function Component({params}) {
       </div>
 
       <div className="flex w-full mb-24">
-        <label htmlFor="description" className="text-sm font-medium text-foreground dark:text-gray-300">
+        <label htmlFor="description" className="text-sm font-medium text-foreground ">
           {data.data.descripcion}
         </label>
       </div>

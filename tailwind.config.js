@@ -26,6 +26,8 @@ module.exports = {
             'purpura':'#e9d5ff',
             'azul':'#cbd5e1',
             'violeta':'#d8b4fe',
+            'plomo':'#FBFBFD',
+            'negroblanco':'#0c0a09',
 
             background: "#FBFBFD", // or DEFAULT
             foreground: "#11181C", // or 50 to 900 DEFAULT
@@ -48,6 +50,8 @@ module.exports = {
             'purpura':'#6b21a8',
             'azul':'#172554',
             'violeta':'#6b21a8',
+            'plomo':'#3f3d56',
+            'negroblanco':'#FBFBFD',
 
             background: "#07091E", // or DEFAULT
             foreground: "#ECEDEE", // or 50 to 900 DEFAULT

@@ -13,8 +13,8 @@ const TagsSelection = ({values, onChange}) => {
   return (
     <div className="w-full flex flex-col">
       <div className="flex flex-row space-x-2 items-center">
-        <Input type="text" label="Tag" onValueChange={setTag} value={tag}/>
-        <Button onClick={handleAdd}>Añadir</Button>
+        <Input color="primary" type="text" label="Tag" onValueChange={setTag} value={tag}/>
+        <Button color="primary" onClick={handleAdd}>Añadir</Button>
       </div>
       <ul className="flex flex-row flex-wrap">
         {values.map((tag, index) => (

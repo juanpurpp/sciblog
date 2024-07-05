@@ -21,22 +21,23 @@ export default function Component() {
   const [enlace, setEnlace] = useState(''); // Inicializa el estado del enlace (linkPowerBi
   // Inicializa el estado de las etiquetas [tags
   return (
-    <div className="flex h-full w-full items-center justify-center bg-background dark:bg-[#3f3d56] px-4">
-      <div className="w-full max-w-xl rounded-lg bg-azul p-8 shadow-lg border border-gray-300 dark:bg-gray-950">
+    <div className="flex h-full w-full items-center justify-center bg-plomo px-4">
+      <div className="w-full max-w-xl rounded-lg bg-azul p-8 shadow-lg border border-gray-300 ">
         <form>
-          <div className='mb-4 text-white'>
+          <div className='mb-4 '>
             <Input
               type="text"
               label="Título"
+              color="primary"
               labelPlacement="outside-left"
               placeholder="Título de la publicación"
               value={titulo}
               onValueChange={(value) => setTitulo(value)}
-              classNames={{label: 'text-white', mainWrapper:'w-full', inputWrapper: 'bg-slate-100'}}
+              classNames={{label:'mb-2 block text-sm font-medium text-foreground', mainWrapper:'w-full'}}
             />
           </div>
           <div className="mb-4"> {/* Agregado mb-4 para espacio debajo del Input */}
-            <label className="mb-2 block text-sm font-medium text-foreground dark:text-gray-300" htmlFor="linkPowerBi">
+            <label className="mb-2 block text-sm font-medium text-foreground" htmlFor="linkPowerBi">
               Link Power BI
             </label>
             <Input
@@ -54,7 +55,7 @@ export default function Component() {
             />
           </div>
           <div className="mb-4"> {/* Agregado mb-4 para espacio debajo del Textarea */}
-            <label className="mb-2 block text-sm font-medium text-foreground dark:text-gray-300" htmlFor="description">
+            <label className="mb-2 block text-sm font-medium text-foreground " htmlFor="description">
               Añadir descripción
             </label>
             <Textarea
@@ -69,8 +70,8 @@ export default function Component() {
             />
           </div>
           <TagsSelection onChange={(values)=>setTags(values)} values={tags}/>
-          <Button
-            className="w-full mb-2 mt-4 rounded-md bg-primary dark:bg-gray-800 px-4 py-2 text-on-primary dark:text-white hover:bg-[#2f2c44] dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-gray-800 focus:ring-offset-2"
+          <Button color="primary"
+            className="w-full mb-2 mt-4 rounded-md bg-primary px-4 py-2 text-on-primary dark:text-white hover:bg-[#2f2c44] dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-gray-800 focus:ring-offset-2"
             onClick={(e) => {
               e.preventDefault();
               postMutation.mutate({titulo, descripcion, tags, enlace});

@@ -32,7 +32,7 @@ export default function Page() {
           
         </div>
         <div className='w-full justify-start items-start flex flex-col my-4 mx-2 px-2 space-y-0 '>
-          <a className="w-full" onClick={() => router.push('/Tema')}><ForoPost className="w-full"/></a>
+          <a className="w-full"><ForoPost className="w-full"/></a>
           
         </div>
       </div>
