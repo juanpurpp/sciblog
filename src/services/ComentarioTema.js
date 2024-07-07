@@ -1,7 +1,7 @@
 import prisma from "@/libs/db"
 
 export default {
-  create: async ({content, comentarioId, email_usuario}) => {
+  create: async ({Texto, Fecha, temaId, email_usuario}) => {
     return await prisma.$transaction( 
       async t=>{
         const usuario = await t.usuario.findUnique({
@@ -9,19 +9,20 @@ export default {
             email: email_usuario
           },
         })
-        return await t.Respuesta.create({
+        return await t.Comentario.create({
           data:{
-            content,
-            comentario: { connect: { id: comentarioId } },
+            Texto,
+            Fecha,
+            tema: { connect: { id: temaId } },
             usuario: { connect: { id: usuario.id } }
           }
         })
       }
     )
   },
-  findByPk: async (id) => await prisma.Respuesta.findMany({
+  findByPk: async (id) => await prisma.Comentario.findMany({
     where: {
-      comentarioId: id,
+      temaId: id,
     },
     include: {
       usuario: true

@@ -5,8 +5,8 @@ const crearRespuesta = async ({content, comentarioId}) =>{
   return response
 }
 
-const obtenerRespuesta = async () =>{
-  const response = await Axios.get('/respuesta?comentarioId=', {  } )
+const getRespuestaByIdComentario = async ({id}) => {
+  const response = await Axios.get(`/respuesta/${id}`)
   return response
 }
-export { crearRespuesta , obtenerRespuesta}
+export { crearRespuesta , getRespuestaByIdComentario}
