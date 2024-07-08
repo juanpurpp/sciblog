@@ -15,9 +15,9 @@ export default function Page() {
           </p>
         </details>
         <details className="p-4 bg-purpura rounded">
-          <summary className="text-xl font-semibold cursor-pointer">¿Cómo puedo unirme a un grupo?</summary>
+          <summary className="text-xl font-semibold cursor-pointer">¿Cómo puedo unirme a un foro?</summary>
           <p className="pt-2">
-            Para unirse a un grupo, se debe dirigir al apartado de comunidad, seleccionar un grupo y luego hacer clic en el botón de unirse.
+            Para unirse a un grupo, se debe dirigir al apartado de foro, seleccionar una sección y luego hacer clic en el botón de unirse.
           </p>
         </details>
         <details className="p-4 bg-purpura rounded">

@@ -23,9 +23,6 @@ export default function Page() {
           <div className='flex w-full justify-start items-start'>
             <h1 className='text-xl font-semibold'>Temas</h1>
           </div>
-          <div className='flex w-full justify-center items-start'>
-            <SearchBar className='w-full' placeholder="Buscar tema"/>
-          </div>
           <div className="flex w-full justify-end items-center mr-7 ">
             <Button color="primary" onClick={() => router.push('foros/FormuForo')}>Agregar nuevo tema</Button>
           </div>
