@@ -18,9 +18,11 @@ model Usuario {
   updateAt             DateTime  @updatedAt
   temas                Tema[]
   estudios             Estudio[]
-  guardados             Guardados[]
+  guardados            Guardados[]
   comentarios          Comentario[]
+  comentariosEstudio   ComentarioEstudio[]
   respuestas           Respuesta[]
+  respuestasEstudio    RespuestaEstudio[]
   //useridfk Usuario @relation(fields: [id], references: [id])
 }
 
@@ -48,7 +50,7 @@ model Estudio {
   id              Int          @id @default(autoincrement())
   titulo          String       @db.VarChar(255)
   descripcion     String?
-  comentarios     Comentario[]
+  comentarios     ComentarioEstudio[]
   tags            String[]
   enlace          String?
   userId          Int
@@ -62,8 +64,6 @@ model Comentario {
   id         Int         @id @default(autoincrement())
   Texto      String
   Fecha      DateTime
-  estudioId  Int?
-  estudio    Estudio?    @relation(fields: [estudioId], references: [id])
   temaId     Int?
   tema       Tema?       @relation(fields: [temaId], references: [id])
   usuarioId  Int
@@ -78,8 +78,31 @@ model Respuesta {
   content      String?
   comentarioId Int
   comentario   Comentario @relation(fields: [comentarioId], references: [id])
+  usuarioId    Int
+  usuario      Usuario     @relation(fields: [usuarioId], references: [id])
+  createdAt    DateTime   @default(now())
+  updateAt     DateTime   @updatedAt
+}
+
+model ComentarioEstudio {
+  id         Int         @id @default(autoincrement())
+  Texto      String
+  estudioId  Int?
+  estudio    Estudio?    @relation(fields: [estudioId], references: [id])
   usuarioId  Int
   usuario    Usuario     @relation(fields: [usuarioId], references: [id])
+  respuestas RespuestaEstudio[]
+  createdAt  DateTime    @default(now())
+  updateAt   DateTime    @updatedAt
+}
+
+model RespuestaEstudio {
+  id           Int        @id @default(autoincrement())
+  content      String?
+  comentarioId Int
+  comentario   ComentarioEstudio @relation(fields: [comentarioId], references: [id])
+  usuarioId    Int
+  usuario      Usuario     @relation(fields: [usuarioId], references: [id])
   createdAt    DateTime   @default(now())
   updateAt     DateTime   @updatedAt
 }

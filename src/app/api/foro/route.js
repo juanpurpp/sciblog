@@ -29,6 +29,8 @@ export async function DELETE(req) {
 
 export async function GET(req){
 	try {
+		const token = JSON.parse(req.cookies.get('auth').value)
+		console.log(token)
 		const temas = await Foro.findAll()
     return  NextResponse.json({message: 'Tema creado correctamente', data: temas,}, {status: 200})
 	} catch (e) {
