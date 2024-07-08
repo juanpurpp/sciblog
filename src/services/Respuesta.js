@@ -19,12 +19,17 @@ export default {
       }
     )
   },
-  findByPk: async (id) => await prisma.Respuesta.findMany({
+  findByPk: async (id) => {
+   console.log("paso por aqui aaaaaaaaaaaaaaaaaaaaaaaa", id );
+    
+    await prisma.Respuesta.findMany({
+    
     where: {
       comentarioId: id,
     },
     include: {
       usuario: true
     },
-  }),
+  });
+  }
 }

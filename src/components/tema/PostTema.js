@@ -15,7 +15,7 @@ const PostTema = ({className, nombre, contenido}) => {
           
         </div>
       </div>
-    )
+    ) 
   }
   
   export default PostTema;

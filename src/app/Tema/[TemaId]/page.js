@@ -20,12 +20,12 @@ export default function Page({params: {TemaId}}) {
                 <PostTema className="w-full" nombre={nombre} contenido={contenido}/>
                 <div className="flex w-11/12 justify-start items-center mr-7 ">
                  <Link href={`/Tema/${TemaId}/comentario`}>
-                     <Button color="primary" className="text-2xl my-4">Comentar</Button>
+                     <Button color="primary" onClick={() => router.push('Tema/Comentario')} className="text-2xl my-4">Comentar</Button>
                  </Link>
                 </div>
             </div>
             <div className='w-full justify-start items-start flex flex-col px-1 space-y-0 '>
-                <Postcom className="w-full" />
+                <Postcom className="w-full" TemaId={TemaId} />
             </div>
         </div>
     )

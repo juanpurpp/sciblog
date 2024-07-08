@@ -5,6 +5,7 @@ import ComentarioTema from '@/services/ComentarioTema'
 // Handler para solicitudes GET
 export async function GET(req, {params}) {
   try {
+    console.log("aaaaaaaeeeeee")
     const id = params.id;
     const comentario = await ComentarioTema.findByPk(parseInt(id));
     console.log(comentario);

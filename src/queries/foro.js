@@ -12,7 +12,7 @@ const borrarTema = async ({idT}) =>{
   } catch (error) {
     console.error("Error al intentar eliminar el tema:", error);
     throw error; 
-  }
+  } 
 }
 
 const obtenerTemas = async () =>{

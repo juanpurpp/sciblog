@@ -1,30 +1,31 @@
-import FotoCom from './FotoCom'
+"use client";
+import FotoCom from './FotoCom';
+import { useQuery } from 'react-query';
+import { getComentarioByIdTema } from '@/queries/comentariosTema';
 
-const Postcom = ({className}) => {
-    return (
-      <div className={className}>
-        <div className="flex flex-col w-full">
-          
-          <div className="relative w-full  ">
-            <div className="flex flex-col w-full">
-              <div className="w-full px-4 mt-4">
-              <FotoCom nombre={<strong>Mario</strong>} description="La pérdida de cabello puede comenzar a ser evidente en la mayoría de las personas a partir de los 30 años"/>
-              </div>  
-              <div className="w-full px-4 mt-4">
-              <FotoCom nombre={<strong>Harry</strong>} description=" La predisposición genética juega un papel importante en la pérdida de cabello, especialmente la alopecia androgenética."/>
+const Postcom = ({ className, TemaId }) => {
+  const { data, isLoading, isError } = useQuery(['get-comentario', TemaId], () => getComentarioByIdTema({ id: TemaId }));
+  console.log('data', data)
+
+  return (
+    <div className={className}>
+      <div className="flex flex-col w-full">
+        <div className="relative w-full">
+          <div className="flex flex-col w-full">
+            {data?.data.data.map((item, index) => (
+              <div className="w-full px-4 mt-4" key={index}>
+                <FotoCom
+                  nombre={<strong>{item.usuario.nombre}</strong>}
+                  description={item.Texto}
+                  id={item.id}                
+                />
               </div>
-              <div className="w-full px-4 mt-4">
-              <FotoCom nombre={<strong>Tomas</strong>} description=" A medida que envejecemos, la velocidad de crecimiento del cabello puede disminuir y la calidad del cabello puede cambiar."/>
-              </div>
-              <div className="w-full px-4 mt-4">
-              <FotoCom nombre={<strong>Carlos</strong>} description=" A los 50 años, tienes el 50% de mostrar calvicie"/>
-              </div>
-            </div>  
+            ))}
           </div>
-          
         </div>
       </div>
-    )
-  }
-  
-  export default Postcom
+    </div>
+  );
+};
+
+export default Postcom;
