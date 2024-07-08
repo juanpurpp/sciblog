@@ -15,7 +15,7 @@ export default function Page({params: {TemaId}}) {
 
     const {nombre, contenido} = tema;
     return (
-        <div className='flex flex-col w-full'>
+        <div className='flex flex-col w-full mx-0 overflow-y-scroll'>
             <div className='flex flex-col justify-start items-center'>
                 <PostTema className="w-full" nombre={nombre} contenido={contenido}/>
                 <div className="flex w-11/12 justify-start items-center mr-7 ">

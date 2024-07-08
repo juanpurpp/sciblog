@@ -3,7 +3,7 @@ import Image from 'next/image'
 const FotoRe = ({className, nombre, content}) => { 
   return (
 
-    <div className='w-full flex-col space-y-2 sm:py-4 sm:flex sm:items-start sm:space-y-0 sm:space-x-6 bg-violeta'>
+    <div className='w-full flex-col space-y-2 sm:py-4 sm:flex sm:items-start sm:space-y-0 sm:space-x-6 bg-tarjeta'>
         <div className=' flex flex-row w-1/3 mx-5 justify-start space-y-4 items-start'>
         <Image 
             width={50}

@@ -28,7 +28,7 @@ module.exports = {
             'violeta':'#d8b4fe',
             'plomo':'#FBFBFD',
             'negroblanco':'#0c0a09',
-
+            'fuchsia':'#a855f7',
             background: "#FBFBFD", // or DEFAULT
             foreground: "#11181C", // or 50 to 900 DEFAULT
             primary: {
@@ -52,7 +52,7 @@ module.exports = {
             'violeta':'#6b21a8',
             'plomo':'#3f3d56',
             'negroblanco':'#FBFBFD',
-
+            'fuchsia':'#d946ef',
             background: "#07091E", // or DEFAULT
             foreground: "#ECEDEE", // or 50 to 900 DEFAULT
             primary: {

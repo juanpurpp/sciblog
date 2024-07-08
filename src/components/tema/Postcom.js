@@ -17,7 +17,8 @@ const Postcom = ({ className, TemaId }) => {
                 <FotoCom
                   nombre={<strong>{item.usuario.nombre}</strong>}
                   description={item.Texto}
-                  id={item.id}                
+                  id={item.id}      
+                  TemaId={TemaId}         
                 />
               </div>
             ))}
