@@ -3,6 +3,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, useDisclosure, Moda
 import { PlusIcon } from '@heroicons/react/24/outline';
 import { useMutation, useQuery } from 'react-query';
 import Axios from '@/services/Axios';
+import { useSession } from 'next-auth/react';
+import { TrashIcon } from '@heroicons/react/24/solid';
 
 export default function CommentsModal({ publicacion_id }) {
 	const { isOpen, onOpenChange } = useDisclosure();
@@ -25,6 +27,8 @@ export default function CommentsModal({ publicacion_id }) {
 	const addComment = () => {
 		comentarMutation.mutate({contenido:comentario})
 	};
+	const borrar = useMutation(async ({comentario_id}) => await Axios.delete(`/comentarios-estudio/${comentario_id}`), {onSuccess: () => comentarios.refetch()})
+	const {data, status} = useSession()
 	return (
 		<>
 			<Button
@@ -40,9 +44,14 @@ export default function CommentsModal({ publicacion_id }) {
 					<ModalHeader>Comentarios</ModalHeader>
 					<ModalBody>
 						{comentarios?.data?.data.data.map((comment, index) => (
-							<div key={comment.id} className="p-2 border-b rounded-md">
-								<h3 className="font-bold">{comment.usuario.nombre}</h3>
-								<p className='text-sm'>{comment.Texto}</p>
+							<div className='flex flex-row space-x-2 items-center justify-stretch'>
+								<div key={comment.id} className="p-2 border-b rounded-md w-full">
+									<h3 className="font-bold">{comment.usuario.nombre}</h3>
+									<p className='text-sm'>{comment.Texto}</p>
+								</div>
+								{data?.usuario?.id === comment.usuario.id && (
+									<TrashIcon className="h-6 w-5 text-red-500 cursor-pointer hover:text-red-600 hover:bg-red-200 rounded-md p-0.5 active:text-red-800" onClick={() => borrar.mutate({comentario_id: comment.id})}/>
+								)}
 							</div>
 						))}
 						<Pagination

@@ -31,3 +31,20 @@ export async function POST(req, {params}) {
     return NextResponse.json({ message: 'Error en el servidor' }, { status: 500 });
   }
 }
+export async function DELETE(req,{ params}){
+  try {
+    const id = params.id;
+    const comentario = await prisma.ComentarioEstudio.delete({
+      where: {
+        id: parseInt(id),
+      },
+    });
+    if (!comentario) {
+      return NextResponse.json({ message: 'comentario not found' }, { status: 404 });
+    }
+    return NextResponse.json({ message: 'comentario deleted successfully' });
+  } catch (e) {
+    console.error('SERVER ERROR', e);
+    return NextResponse.json({ message: 'Error en el servidor' }, { status: 500 });
+  }
+}
