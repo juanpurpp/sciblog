@@ -44,6 +44,7 @@ export default {
         where: {
           nombre: {
             contains: nombre,
+            mode: 'insensitive'
           }
         },
         include:{
