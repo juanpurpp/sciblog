@@ -17,7 +17,8 @@ export const GET = async (req, { params }) => {
             },
             {
               titulo: {
-                contains: q
+                contains: q,
+                mode: 'insensitive'
               } 
             }
           ]
