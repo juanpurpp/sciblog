@@ -4,7 +4,17 @@ import { NextResponse } from "next/server";
 export async function GET(req, {params}) {
   try {
     const id = params.id;
-    const comentarios = await prisma.ComentarioEstudio.findMany({ where: { estudioId: parseInt(id) }, include: { usuario: true }});
+    const comentarios = await prisma.ComentarioEstudio.findMany({ 
+      where: { estudioId: parseInt(id) },
+      include: {
+        usuario: true,
+        respuestas: {
+          include:{
+            usuario:true
+          }
+        }
+      }
+    });
     return NextResponse.json({message: 'Comentario de publicacion obtenidos correctamente', data:comentarios},{status: 200});
   } catch (e) {
     console.error('SERVER ERROR', e);
