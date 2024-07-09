@@ -26,13 +26,13 @@ export default function Page() {
           <div className='flex w-full justify-center items-start'>
             <SearchBar className='w-full' placeholder="Buscar tema"/>
           </div>
-          <div className="flex w-full justify-end items-center mr-7 ">
+          <div className="flex w-full justify-end items-center mr-7 px-8">
             <Button color="primary" onClick={() => router.push('foros/FormuForo')}>Agregar nuevo tema</Button>
           </div>
           
         </div>
-        <div className='w-full justify-start items-start flex flex-col my-4 mx-2 px-2 space-y-0 '>
-          <a className="w-full"><ForoPost className="w-full"/></a>
+        <div className='w-full justify-start items-start flex flex-col my-4 px-6 space-y-0 '>
+          <a className="w-full"><ForoPost /></a>
           
         </div>
       </div>
