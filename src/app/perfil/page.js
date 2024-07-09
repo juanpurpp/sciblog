@@ -128,7 +128,7 @@ const Componente = () => {
               
               <DropdownMenu>
                 {
-                  !mis_publicaciones.isLoading && mis_publicaciones.data.data.map((publicacion) => (
+                  !mis_publicaciones.isLoading && mis_publicaciones?.data?.data.map((publicacion) => (
                     <DropdownItem key={publicacion.id} href={`/publicacion/${publicacion.id}`}>
                       {publicacion.titulo}
                     </DropdownItem>

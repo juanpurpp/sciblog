@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link'; // Importa Link de Next.js
 import { Button } from '@nextui-org/react';
 import { ArrowDownTrayIcon, ShareIcon, BookmarkIcon, PencilIcon } from '@heroicons/react/24/outline';
+import { BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/24/solid';
 import { Modal, ModalHeader, ModalBody, ModalFooter, ModalContent, useDisclosure } from '@nextui-org/react';
 import CommentsModal from '@/components/CommentsModal';
 import { useMutation, useQuery } from 'react-query';
@@ -26,10 +27,13 @@ export default function Component({params}) {
       console.error('No se pudo copiar el texto');
     });
   };
-
+  const publicaciones_query = useQuery("publicaciones", async () => await Axios.get('/estudios/guardados'))
   const guardarMutation = useMutation(async (data) => await Axios.post('/estudios/guardados', data),
     {
-      onSuccess: () => setModalThreeOpen(true)
+      onSuccess: () => {
+        setModalThreeOpen(true)
+        publicaciones_query.refetch()
+      }
     })
   const handleGuardar = async () => {
     guardarMutation.mutate(
@@ -38,6 +42,9 @@ export default function Component({params}) {
   }
   const router = useRouter()
   const borrar = useMutation(async () => await Axios.delete(`/estudios/${params.id}`), {onSuccess: () => router.push('/')})
+ 
+  console.log('pg', publicaciones_query?.data?.data)
+  const isSaved = publicaciones_query?.data?.data?.some((p) => p.estudioId == params.id)
   if(isLoading) return <div>Cargando...</div>
   return (
     <div className="bg-background p-8 w-full">
@@ -51,24 +58,21 @@ export default function Component({params}) {
           <h2 className="mb-4 text-2xl font-bold ">{data.data.titulo}</h2>
         </div>
         <div className="w-1/3 flex justify-end items-start space-x-2">
-          <Button
-            className="rounded-md bg-[#3f3d56] text-white hover:bg-[#2f2c44] focus:outline-none focus:ring-2 focus:ring-[#3f3d56] focus:ring-offset-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-            onPress={() => setModalOneOpen(true)}
-          >
-            Descargar Dataset <ArrowDownTrayIcon className="h-5 w-5" />
-          </Button>
+
 
           <Modal isOpen={isModalOneOpen} onOpenChange={setModalOneOpen}>
             <ModalContent className='bg-azul'>
               <ModalHeader>Descarga Realizada</ModalHeader>
             </ModalContent>
           </Modal>
-          <CommentsModal />
+          <CommentsModal publicacion_id={params.id}/>
         </div>
       </div>
 
       <div className="flex w-full justify-center h-2/4 mb-24">
-        <img src="/pre2.png" className="rounded-md" style={{ width: '700px', height: '400px' }} />
+      {!isLoading && (
+        <iframe title="covidcase" className='w-full h-full' src={data?.data?.enlace} frameborder="0" allowFullScreen="true"></iframe>
+      )}
       </div>
       <div className="flex w-full mb-4 space-x-4">
         <div className="flex-grow">
@@ -104,11 +108,14 @@ export default function Component({params}) {
               <Button
                 auto
                 rounded
-                className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white dark:bg-blue-700 dark:hover:bg-blue-800"
+                className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white dark:bg-blue-700 dark:hover:bg-blue-800 disabled:bg-blue-900 disabled:text-slate-400"
                 onPress={handleGuardar}
+                disabled={isSaved}
               >
-                Guardar Publicación
-                <BookmarkIcon className="h-5 w-5 ml-2" />
+                {isSaved ? 'Publicación Guardada' : 'Guardar Publicación'}
+                {
+                  isSaved?  <BookmarkIconSolid className="h-5 w-5 ml-2" /> : <BookmarkIcon className="h-5 w-5 ml-2" />
+                }
               </Button>
             )
           }
