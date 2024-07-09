@@ -22,7 +22,7 @@ export default function Page() {
         <div className="flex flex-row w-full space-y-0 my-0 mx-5 px-2 ">
           <div className='flex w-full justify-start items-start'>
             <h1 className='text-xl font-semibold'>Temas</h1>
-          </div>
+          </div> 
           <div className='flex w-full justify-center items-start'>
             <BusquedaForo className='w-full' placeholder="Buscar tema"/>
           </div>

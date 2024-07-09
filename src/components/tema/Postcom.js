@@ -2,11 +2,12 @@
 import FotoCom from './FotoCom';
 import { useQuery } from 'react-query';
 import { getComentarioByIdTema } from '@/queries/comentariosTema';
+import { useSession } from 'next-auth/react';
 
 const Postcom = ({ className, TemaId }) => {
   const { data, isLoading, isError } = useQuery(['get-comentario', TemaId], () => getComentarioByIdTema({ id: TemaId }));
   console.log('data', data)
-
+  const { data: session } = useSession();
   return (
     <div className={className}>
       <div className="flex flex-col w-full">
@@ -19,6 +20,8 @@ const Postcom = ({ className, TemaId }) => {
                   description={item.Texto}
                   id={item.id}      
                   TemaId={TemaId}         
+                  correo={item.usuario.email} // Correo del creador de la respuesta
+                  usuarioCorreo={session?.user?.email} 
                 />
               </div>
             ))}

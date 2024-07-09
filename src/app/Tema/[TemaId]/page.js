@@ -21,7 +21,7 @@ export default function Page({ params: { TemaId } }) {
   return (
     <div className='flex flex-col w-full mx-0 overflow-y-scroll'>
       <div className='flex flex-col justify-start items-center'>
-        <PostTema className="w-full" nombre={nombre} contenido={contenido} usuario_tema={usuario_tema} />
+        <PostTema className="w-full" id={TemaId} nombre={nombre} contenido={contenido} usuario_tema={usuario_tema} />
         <div className="flex w-11/12 justify-start items-center mr-7">
           <Link href={`/Tema/${TemaId}/comentario`}>
             <Button color="primary" className="text-2xl my-4">Comentar</Button>
