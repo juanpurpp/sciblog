@@ -44,8 +44,8 @@ export default function CommentsModal({ publicacion_id }) {
 					<ModalHeader>Comentarios</ModalHeader>
 					<ModalBody>
 						{comentarios?.data?.data.data.map((comment, index) => (
-							<div className='flex flex-row space-x-2 items-center justify-stretch'>
-								<div key={comment.id} className="p-2 border-b rounded-md w-full">
+							<div key={comment.id} className='flex flex-row space-x-2 items-center justify-stretch'>
+								<div  className="p-2 border-b rounded-md w-full">
 									<h3 className="font-bold">{comment.usuario.nombre}</h3>
 									<p className='text-sm'>{comment.Texto}</p>
 								</div>

@@ -110,7 +110,7 @@ export default function Component({params}) {
                 rounded
                 className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white dark:bg-blue-700 dark:hover:bg-blue-800 disabled:bg-blue-900 disabled:text-slate-400"
                 onPress={handleGuardar}
-                disabled={isSaved}
+                isDisabled={isSaved}
               >
                 {isSaved ? 'Publicación Guardada' : 'Guardar Publicación'}
                 {

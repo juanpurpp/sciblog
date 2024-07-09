@@ -35,6 +35,9 @@ export default {
         take: 3,
         orderBy: {
           createdAt: 'desc'
+        },
+        include:{
+          usuario_creador:true
         }
       });
     } catch (e) {
