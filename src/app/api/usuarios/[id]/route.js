@@ -8,7 +8,7 @@ export async function GET(req,  {params}){
     
     let result
     if(parseFloat(params.id) ){
-      result = await Usuario.getPerfilById(params.id)
+      result = await Usuario.getPerfilById(parseFloat(params.id))
     }
     else{
       result = await Usuario.getPerfilByEmail(token.email)

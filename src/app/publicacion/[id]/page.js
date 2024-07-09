@@ -50,7 +50,11 @@ export default function Component({params}) {
     <div className="bg-background p-8 w-full">
       <div className="flex w-full">
         <div className="w-1/3">
-          <div className="font-bold text-lg">{data.data.usuario_creador.nombre + ' ' +data.data.usuario_creador.apellido }</div>
+          <div className="font-bold text-lg">
+            <Link className='hover:text-blue-400' href={`${window.location.origin}/perfil/${data.data.usuario_creador.id}`}>
+              {data.data.usuario_creador.nombre + ' ' +data.data.usuario_creador.apellido }
+            </Link>
+          </div>
           <div className="text-sm">{data.data.usuario_creador.area_especializacion}</div>
           <div className="text-sm ">{data.data.usuario_creador.organizacion}</div>
         </div>
@@ -69,9 +73,9 @@ export default function Component({params}) {
         </div>
       </div>
 
-      <div className="flex w-full justify-center h-2/4 mb-24">
+      <div className="flex w-full justify-center h-2/4 mb-48">
       {!isLoading && (
-        <iframe title="covidcase" className='w-full h-full' src={data?.data?.enlace} frameborder="0" allowFullScreen="true"></iframe>
+        <iframe title="covidcase" height={600} className='w-full' src={data?.data?.enlace} frameborder="0" allowFullScreen="true"></iframe>
       )}
       </div>
       <div className="flex w-full mb-4 space-x-4">

@@ -1,8 +1,6 @@
 "use client"
 import React from "react";
-import { Select, SelectItem } from "@nextui-org/react";
-import { animals } from "./data";
-import { Avatar } from "@nextui-org/react";
+import { Avatar, Spinner } from "@nextui-org/react";
 import { useState } from 'react';
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button, Card, CardBody } from "@nextui-org/react";
 import { Modal, ModalHeader, ModalBody, ModalFooter, ModalContent, useDisclosure } from '@nextui-org/react';
@@ -13,7 +11,7 @@ import { useSession } from "next-auth/react";
 import { useQuery } from "react-query";
 import Axios from "@/services/Axios";
 
-const Componente = () => {
+const Componente = ({params}) => {
   const { isOpen, onOpenChange } = useDisclosure();
 
   const [copied, setCopied] = useState(false);
@@ -25,33 +23,23 @@ const Componente = () => {
       console.error('No se pudo copiar el texto');
     });
   };
-  const publicaciones_query = useQuery("publicaciones", async () => await Axios.get('/estudios/guardados'))
-  const session = useSession()
-  const mis_publicaciones = useQuery("mis_publicaciones", async () => await Axios.get(`/estudios/byUser/${session.data.usuario.id}`))
+  const perfil_query = useQuery("perfil", async () => await Axios.get(`/usuarios/${params.id}`))
+  const mis_publicaciones = useQuery("mis_publicaciones", async () => await Axios.get(`/estudios/byUser/${params.id}`))
   const {data, status} = useSession()
-  console.log('ses', session.data?.usuario?.id)
   if(status != 'authenticated') return <div className="w-full h-44 flex justify-center items-center">
     <p className="text-center align-middle text-4xl text-slate-800 font-semibold w-full"> Debe iniciar sesión para ver su perfil</p>
   </div>
+  console.log('pr', perfil_query.data)
+  if(perfil_query.isLoading) return <Spinner></Spinner>
   return (
     <div className=" p-8 w-full">
       {/* Primera columna con 3 divs en fila */}
       <div className="flex w-full mb-24">
         <div className="w-1/3 space-x-1">
-          <Link href="/perfil/eliminarCuenta">
-            <button className="p-2 rounded bg-red-500 hover:bg-red-700 text-white">
-              <TrashIcon className="h-5 w-5" />
-            </button>
-          </Link>
-          <Link href="/perfil/editarPerfil">
-            <button className="p-2 rounded bg-blue-500 hover:bg-blue-700 text-white">
-              <PencilIcon className="h-5 w-5" />
-            </button>
-          </Link>
           <div>
-            <div className="font-bold text-lg">{data.user.nombre + ' ' +data.user.apellido}</div>
-            <div className="text-sm">{ data.user.area_especializacion}</div>
-            <div className="text-sm">{ data.user.organizacion }</div>
+            <div className="font-bold text-lg">{perfil_query.data?.data?.data.nombre + ' ' +perfil_query.data?.data?.data.apellido}</div>
+            <div className="text-sm">{ perfil_query.data?.data?.data.area_especializacion}</div>
+            <div className="text-sm">{ perfil_query.data?.data?.data.organizacion }</div>
           </div>
         </div>
         <div className="flex w-1/3 justify-center">
@@ -59,9 +47,7 @@ const Componente = () => {
         </div>
 
         <div className="flex-col w-1/3 space-y-2">
-          <div className="flex justify-end"> 
-            <ThemeSwitch></ThemeSwitch>
-          </div>
+
           <div className="flex justify-end space-x-2">
             <Button
               className="rounded-md text-white"
@@ -80,7 +66,7 @@ const Componente = () => {
                     className="text-md text-gray-500 mb-4 cursor-pointer"
                     onClick={() => copyToClipboard('google.com')}
                   >
-                    {window.location.href}/{session.data?.usuario?.id}
+                    {window.location.href}
                   </label>
                   {copied && <div className="text-sm text-green-500">Copiado</div>}
                 </ModalBody>
@@ -95,6 +81,7 @@ const Componente = () => {
         <CardBody>
         <div className="flex justify-center mx-6 ">
           
+          
           <div className="flex w-1/2 justify-center">
             <Dropdown >
               <DropdownTrigger>
@@ -102,27 +89,7 @@ const Componente = () => {
                   variant="bordered"
                   className="w-full bg-tarjeta"
                 >
-                  Publicaciones Guardadas
-                </Button>
-              </DropdownTrigger>
-             
-              <DropdownMenu>
-                {!publicaciones_query.isLoading && publicaciones_query?.data?.data.map((guardado) => (
-                  <DropdownItem key={guardado.estudio.id} href={`/publicacion/${guardado.estudio.id}`}>{guardado.estudio.titulo}</DropdownItem>
-                ))}
-              </DropdownMenu>
-              
-             
-            </Dropdown>
-          </div>
-          <div className="flex w-1/2 justify-center">
-            <Dropdown >
-              <DropdownTrigger>
-                <Button
-                  variant="bordered"
-                  className="w-full bg-tarjeta"
-                >
-                  Mis Publicaciones
+                  Sus publicaciones
                 </Button>
               </DropdownTrigger>
               

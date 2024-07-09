@@ -27,7 +27,7 @@ export default function Home() {
               >Nueva publicación</Button>
             </Link>
           </div>            
-          <div className='flex flex-col w-2/3 justify-center space-y-4 items-center'>
+          <div className='flex flex-col w-full justify-center space-y-4 items-center'>
             <h1 className='font-semibold text-3xl'>Buscar</h1>
             <SearchBar className='w-full' search={q} setSearch={setQ}/>
           </div>
@@ -46,12 +46,14 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className='flex flex-col w-full justify-center space-y-4 items-center'>
+       {/*
+         <div className='flex flex-col w-full justify-center space-y-4 items-center'>
           <div className='p-8 w-4/5 space-y-4'>
             <h2 className='font-semibold text-3xl'>Post recomendado del día</h2>
           </div>
           <DailyPost className="w-5/6"/>
         </div>
+       */}
       </div>
     </main>
   )

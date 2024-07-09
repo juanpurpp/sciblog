@@ -31,7 +31,7 @@ model Guardados {
   userId    Int
   estudioId Int
   usuario   Usuario  @relation(fields: [userId], references: [id])
-  estudio   Estudio  @relation(fields: [estudioId], references: [id])
+  estudio   Estudio  @relation(fields: [estudioId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 }

@@ -8,9 +8,7 @@ export async function GET(req, { params }) {
     const userId = parseInt(params.userId);
     const estudios = await prisma.estudio.findMany({ where: { userId } });
     console.log(estudios);
-    if (estudios.length === 0) {
-      return NextResponse.json({ message: 'No estudios found for the user' }, { status: 404 });
-    }
+
     return NextResponse.json(estudios);
   } catch (e) {
     console.error('SERVER ERROR', e);
