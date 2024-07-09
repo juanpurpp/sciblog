@@ -64,7 +64,7 @@ export default function CommentsModal({ publicacion_id }) {
 										<div key={index} className='flex flex-row space-x-2 items-center bg-slate-200 rounded-md group'>
 											<h4 className='font-medium text-md'>{respuesta.usuario.nombre + ' ' +respuesta.usuario.apellido}:</h4>
 											<p className='text-xs text-slate-700'>{respuesta.content}</p>
-											<MinusCircleIcon onClick={handleEliminarRespuesta} className='cursor-pointer group-hover:block w-5 h-5 hidden text-red-900'></MinusCircleIcon>
+											{ respuesta?.usuario?.id === comment.usuario.id && <MinusCircleIcon onClick={handleEliminarRespuesta} className='cursor-pointer group-hover:block w-5 h-5 hidden text-red-900'></MinusCircleIcon>}
 										</div>
 									))
 									}
