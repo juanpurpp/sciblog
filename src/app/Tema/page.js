@@ -1,3 +1,4 @@
+"use client"
 import { Button } from '@nextui-org/button';
 import PostTema from '@/components/tema/PostTema';
 import Postcom from '@/components/tema/Postcom';
