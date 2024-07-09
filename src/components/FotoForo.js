@@ -35,7 +35,7 @@ const Fotoforo = ({ className, nombre, description, idT, correo, usuarioCorreo }
   }
 
   return (
-    <div className="flex w-full space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 bg-tarjeta">
+    <div className="flex w-full space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 bg-tarjeta overflow-hidden">
       <Link href={`/Tema/${idT}`} className='w-full'>
         <div className="flex w-full space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 bg-tarjeta">
           <div className="flex flex-col w-1/3 justify-start space-y-4 items-center">

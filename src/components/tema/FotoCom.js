@@ -11,9 +11,9 @@ const FotoCom = ({className, nombre, description,id,TemaId}) => {
 
   return (
     <div className='w-full flex-col space-y-2 sm:py-4 sm:flex sm:items-start sm:space-y-0 sm:space-x-6 bg-violeta'>
-      <div className='w-full justify-start flex-row space-y-2 sm:py-4 sm:flex sm:items-start sm:space-y-0 sm:space-x-6 bg-violeta'>
-        <div  className=' flex flex-col w-1/3 mx-5 justify-start space-y-4 items-start'>
-          <div className=' flex flex-row w-1/3 mx-5 justify-start space-y-4 items-start'>
+      <div className='w-full justify-start flex-row space-y-2 sm:py-1 sm:flex sm:items-start sm:space-y-0 sm:space-x-6 bg-violeta'>
+        <div  className=' flex flex-col w-1/3 mx-5 justify-start space-y-2 items-start'>
+          <div className=' flex flex-row w-1/3 mx-5 justify-start space-y-2 items-start'>
           <Image 
               width={60}
               height={50}
@@ -33,9 +33,8 @@ const FotoCom = ({className, nombre, description,id,TemaId}) => {
             </div>
         </div>
       </div>
-        
-      <details className="p-4 rounded w-11/12 bg-purpura" >
-          <summary className="text-xl font-semibold cursor-pointer w-full ">ver comentarios</summary>
+      <details className="p-3 rounded w-11/12 bg-purpura" >
+          <summary className="text-l font-semibold cursor-pointer w-full ">ver comentarios</summary>
           <a className="w-full"><PostRe className="w-full " id={id}/></a>
         </details>
     </div>

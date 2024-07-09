@@ -4,7 +4,6 @@ import { Input, Textarea, Button } from '@nextui-org/react';
 import {crearRespuesta} from '@/queries/respuesta';
 import { useMutation } from 'react-query'
 import {useState} from "react";
-import Link from 'next/link';
 
 export default function Component({params: {Respuestaid,TemaId}}) {
   const router = useRouter(); // Inicializa useRouter
@@ -15,15 +14,22 @@ export default function Component({params: {Respuestaid,TemaId}}) {
       mutationFn: (data) => crearRespuesta(data),
       onSuccess: () => {
         console.log('se creó el comentario')
+        window.location.href = `/Tema/${TemaId}`;
       },
       onError: (error) => console.error('error api', error)
     }
     )
-    const onSubmit = () =>{
-      respMutation.mutate({
-        content, comentarioId: parseInt(Respuestaid, 10),
-      })
-    }
+    const onSubmit = async () => {
+      if (content.trim() === '') {
+        alert('Por favor escribe un comentario antes de enviar.');
+        return;
+      }
+  
+      await respMutation.mutate({
+        content,
+        comentarioId: parseInt(Respuestaid, 10),
+      });
+    };
   return (
     <div className="flex h-full w-full items-center justify-center bg-background dark:bg-[#3f3d56] px-4">
       <div className="w-full max-w-xl rounded-lg bg-azul p-8 shadow-lg border border-gray-300 dark:bg-gray-950">
@@ -43,11 +49,9 @@ export default function Component({params: {Respuestaid,TemaId}}) {
               className="dark:text-gray-300 dark:placeholder-gray-500"
             />
           </div>
-          <Link href={`/Tema/${TemaId}`}>
             <Button className="w-full mb-2 mt-4 rounded-md bg-primary dark:bg-gray-800 px-4 py-2 text-on-primary dark:text-white hover:bg-[#2f2c44] dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-gray-800 focus:ring-offset-2" onClick={onSubmit}>
               Enviar comentario
             </Button>
-          </Link>
         </form>
       </div>
     </div>
