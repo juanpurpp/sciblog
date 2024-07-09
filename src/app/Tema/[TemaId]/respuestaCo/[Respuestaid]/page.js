@@ -43,7 +43,7 @@ export default function Component({params: {Respuestaid,TemaId}}) {
               bordered
               fullWidth
               color="secondary"
-              placeholder="Escribe una comentario aquí"
+              placeholder="Escribe una respuesta aquí"
               id="comentarioForo"
               value={content} onValueChange={setContent}
               className="dark:text-gray-300 dark:placeholder-gray-500"
