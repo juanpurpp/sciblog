@@ -9,21 +9,21 @@ export default function Page() {
       
       <div className="space-y-4 w-full">
         <details className="p-4 rounded w-full bg-purpura">
-          <summary className="text-xl font-semibold cursor-pointer w-full ">¿Cómo puedo comentar una publicación?</summary>
+          <summary className="text-xl font-semibold cursor-pointer w-full ">¿Cómo puedo comentar un foro</summary>
           <p className="pt-2 w-full ">
-            Se puede comentar una publicación seleccionando la publicación, dirigiéndose hacia las opciones de abajo y seleccionando la segunda opción (a la derecha del corazón).
+            Se puede comentar un foro seleccionando el tema del foro,y hacer clic en comentar, luego rellenar los datos que se soliciten
           </p>
         </details>
         <details className="p-4 bg-purpura rounded">
-          <summary className="text-xl font-semibold cursor-pointer">¿Cómo puedo unirme a un grupo?</summary>
+          <summary className="text-xl font-semibold cursor-pointer">¿Cómo puedo crear un tema en el foro?</summary>
           <p className="pt-2">
-            Para unirse a un grupo, se debe dirigir al apartado de comunidad, seleccionar un grupo y luego hacer clic en el botón de unirse.
-          </p>
+            Para crear un tema debe dirigirse al apartado de foros, y hacer clic en el boton "Agregar Nuevo Tema", luego rellenar los datos que se soliciten
+            </p>
         </details>
         <details className="p-4 bg-purpura rounded">
           <summary className="text-xl font-semibold cursor-pointer">¿Cómo puedo crear una publicación?</summary>
           <p className="pt-2">
-            Para crear una publicación se debe estar en el inicio de la red social. Puede ir al inicio haciendo clic a la izquierda en la opción de inicio, luego hacer clic en el botón Crear publicación y rellenar los datos que se soliciten
+            Para crear una publicación se debe estar en el inicio de la red social. Puede ir al inicio haciendo clic a la izquierda en la opción de inicio, luego hacer clic en el botón "Nueva Publicación" y rellenar los datos que se soliciten
           </p>
         </details>
         <details className="p-4 bg-purpura rounded">

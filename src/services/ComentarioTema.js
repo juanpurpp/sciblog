@@ -17,15 +17,21 @@ export default {
             usuario: { connect: { id: usuario.id } }
           }
         })
-      }
+      } 
     )
   },
   findByPk: async (id) => await prisma.Comentario.findMany({
+  
     where: {
       temaId: id,
     },
     include: {
       usuario: true
     },
-  }),
+    orderBy: {
+      createdAt: 'desc'
+    }
+   
+  })
+ 
 }

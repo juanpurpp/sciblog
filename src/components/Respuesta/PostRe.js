@@ -1,11 +1,12 @@
 "use client";
-import FotoCom from './FotoCom';
+import FotoRe from './FotoRe';
 import { useQuery } from 'react-query';
-import { getComentarioByIdTema } from '@/queries/comentariosTema';
+import { getRespuestaByIdComentario } from '@/queries/respuesta';
 import { useSession } from 'next-auth/react';
 
-const Postcom = ({ className, TemaId }) => {
-  const { data, isLoading, isError } = useQuery(['get-comentario', TemaId], () => getComentarioByIdTema({ id: TemaId }));
+const PostRe = ({ className, id }) => {
+  console.log("aaaasas", id)
+  const { data, isLoading, isError } = useQuery(['get-respuesta', id], () => getRespuestaByIdComentario({ id }));
   console.log('data', data)
   const { data: session } = useSession();
   return (
@@ -15,13 +16,12 @@ const Postcom = ({ className, TemaId }) => {
           <div className="flex flex-col w-full">
             {data?.data.data.map((item, index) => (
               <div className="w-full px-4 mt-4" key={index}>
-                <FotoCom
+                <FotoRe
                   nombre={<strong>{item.usuario.nombre + ' ' + item.usuario.apellido}</strong>}
-                  description={item.Texto}
-                  id={item.id}      
-                  TemaId={TemaId}         
+                  content={item.content}
+                  id={item.id}
                   correo={item.usuario.email} // Correo del creador de la respuesta
-                  usuarioCorreo={session?.user?.email} 
+                  usuarioCorreo={session?.user?.email} // Correo del usuario actual
                 />
               </div>
             ))}
@@ -32,4 +32,4 @@ const Postcom = ({ className, TemaId }) => {
   );
 };
 
-export default Postcom;
+export default PostRe;

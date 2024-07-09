@@ -16,7 +16,7 @@ const ForoPost = ({ className }) => {
           <div className="flex flex-col w-full">
             {data?.data.data.map((item, index) => (
               <div className="w-full px-4 mt-4" key={index}>
-                <Link href={`/Tema/${item.id}`}>
+                
                     <FotoForo
                       nombre={<strong>{item.usuario_tema.nombre + ' ' + item.usuario_tema.apellido}</strong>}
                       description={item.nombre}
@@ -24,7 +24,7 @@ const ForoPost = ({ className }) => {
                       correo={item.usuario_tema.email}
                       usuarioCorreo={session?.user?.email}
                     />
-                </Link>
+            
               </div>
             ))}
           </div>

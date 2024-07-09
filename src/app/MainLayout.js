@@ -25,11 +25,7 @@ const MainLayout = ({children}) => {
       key: '/foros',
       icon: <ChatBubbleLeftRightIcon className="h-6 w-6" />,
     },
-    {
-      label: 'Comunidad',
-      key: '/comunidad',
-      icon: <UserGroupIcon className="h-6 w-6" />,
-    },
+    
     // {
     //   label: 'Áreas',
     //   key: '/areas',
