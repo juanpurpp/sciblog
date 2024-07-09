@@ -19,4 +19,8 @@ const obtenerTemas = async () =>{
   const response = await Axios.get('/foro', {  } )
   return response
 }
-export { crearTema , obtenerTemas,borrarTema}
+const buscaTemas = async () =>{
+  const response = await Axios.get('/foro/busqueda?nombre=', { } )
+  return response
+}
+export { crearTema , obtenerTemas, borrarTema, buscaTemas}

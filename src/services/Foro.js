@@ -37,6 +37,25 @@ export default {
       },
       
     });
+  },
+  findByName: async ({nombre}) => {
+    try{
+      return await prisma.Tema.findMany({
+        where: {
+          nombre: {
+            contains: nombre,
+          }
+        },
+        include:{
+          usuario_tema: true
+        },
+        orderBy: {
+          createdAt: 'desc'
+        }
+      })
+    }
+    catch(e){
+      return null
+    }
   }
-  
 }
