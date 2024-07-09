@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Axios from '@/services/Axios';
 import { Spinner } from '@nextui-org/react';
 const ForoPostBusqueda = ({ className, busqueda }) => {
-  const { data, isLoading } = useQuery(['get-foros'], () => Axios.get(`/foro/busqueda`, {params: {nombre:busqueda}}));
+  const { data, isLoading } = useQuery(['get-foros'], () => Axios.get(`/foro/busqueda`, {params: {nombre:decodeURIComponent(busqueda)}}));
   const { data: session } = useSession(); // Obtener los datos de quien lo esta usando ahora
 
   console.log('data', data)

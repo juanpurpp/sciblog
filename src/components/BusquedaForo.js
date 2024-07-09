@@ -1,6 +1,7 @@
 import {MagnifyingGlassIcon} from '@heroicons/react/24/solid'
 import Link from 'next/link'
 const BusquedaForo = ({className,placeholder, search, setSearch}) => {
+  console.log('param', )
   return (
     <div className={className}>
       <div className='w-full h-10 flex flex-row'>

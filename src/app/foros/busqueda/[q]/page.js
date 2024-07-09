@@ -20,7 +20,7 @@ export default function Page({params}) {
         
         <div className="flex flex-row w-full space-y-0 my-0 mx-5 px-2 ">
           <div className='flex w-full justify-start items-start'>
-            <h1 className='text-xl font-semibold'>Resultados de <span className='italic'>{params.q}</span></h1>
+            <h1 className='text-xl font-semibold'>Resultados de <span className='italic'>{decodeURIComponent(params.q)}</span></h1>
           </div> 
           <div className="flex w-full justify-end items-center mr-7 px-8">
             <Button color="primary" onClick={() => router.push('foros/FormuForo')}>Agregar nuevo tema</Button>
