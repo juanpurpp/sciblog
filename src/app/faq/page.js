@@ -17,7 +17,7 @@ export default function Page() {
         <details className="p-4 bg-purpura rounded">
           <summary className="text-xl font-semibold cursor-pointer">¿Cómo puedo crear un tema en el foro?</summary>
           <p className="pt-2">
-            Para crear un tema debe dirigirse al apartado de foros, y hacer clic en el boton "Agregar Nuevo Tema", luego rellenar los datos que se soliciten
+            Para crear un tema debe dirigirse al apartado de foros, y hacer clic en el boton Agregar Nuevo Tema, luego rellenar los datos que se soliciten
             </p>
         </details>
         <details className="p-4 bg-purpura rounded">
