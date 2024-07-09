@@ -16,7 +16,7 @@ const PostRe = ({ className, id }) => {
             {data?.data.data.map((item, index) => (
               <div className="w-full px-4 mt-4" key={index}>
                 <FotoRe
-                  nombre={<strong>{item.usuario.nombre}</strong>}
+                  nombre={<strong>{item.usuario.nombre+ ' ' + item.usuario.apellido}</strong>}
                   content={item.content}
                   id={item.usuarioId}
                  

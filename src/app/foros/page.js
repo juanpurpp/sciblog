@@ -9,7 +9,7 @@ export default function Page() {
   const router =useRouter()
 
     return (
-      <div className="flex w-full flex-col mx-0 overflow-y-scroll">
+      <div className="flex w-full flex-col mx-0 overflow-y-auto">
 
         <div className="flex flex-row w-full ">
           <div className='flex justify-start full my-6 mx-5 px-2'>

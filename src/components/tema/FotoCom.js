@@ -15,7 +15,7 @@ const FotoCom = ({className, nombre, description,id,TemaId}) => {
         <div  className=' flex flex-col w-1/3 mx-5 justify-start space-y-4 items-start'>
           <div className=' flex flex-row w-1/3 mx-5 justify-start space-y-4 items-start'>
           <Image 
-              width={50}
+              width={60}
               height={50}
               src={'/perfil.png'}>
             </Image>

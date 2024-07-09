@@ -15,7 +15,7 @@ const Postcom = ({ className, TemaId }) => {
             {data?.data.data.map((item, index) => (
               <div className="w-full px-4 mt-4" key={index}>
                 <FotoCom
-                  nombre={<strong>{item.usuario.nombre}</strong>}
+                  nombre={<strong>{item.usuario.nombre + ' ' + item.usuario.apellido}</strong>}
                   description={item.Texto}
                   id={item.id}      
                   TemaId={TemaId}         

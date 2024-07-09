@@ -4,8 +4,9 @@ import { Input, Textarea, Button } from '@nextui-org/react';
 import {crearRespuesta} from '@/queries/respuesta';
 import { useMutation } from 'react-query'
 import {useState} from "react";
+import Link from 'next/link';
 
-export default function Component({params: {Respuestaid}}) {
+export default function Component({params: {Respuestaid,TemaId}}) {
   const router = useRouter(); // Inicializa useRouter
   const [content, setContent] = useState('') 
   console.log("sasasasa",Respuestaid)
@@ -42,9 +43,11 @@ export default function Component({params: {Respuestaid}}) {
               className="dark:text-gray-300 dark:placeholder-gray-500"
             />
           </div>
-          <Button className="w-full mb-2 mt-4 rounded-md bg-primary dark:bg-gray-800 px-4 py-2 text-on-primary dark:text-white hover:bg-[#2f2c44] dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-gray-800 focus:ring-offset-2" onClick={onSubmit}>
-            Enviar comentario
-          </Button>
+          <Link href={`/Tema/${TemaId}`}>
+            <Button className="w-full mb-2 mt-4 rounded-md bg-primary dark:bg-gray-800 px-4 py-2 text-on-primary dark:text-white hover:bg-[#2f2c44] dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-gray-800 focus:ring-offset-2" onClick={onSubmit}>
+              Enviar comentario
+            </Button>
+          </Link>
         </form>
       </div>
     </div>
