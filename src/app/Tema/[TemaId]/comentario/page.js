@@ -44,7 +44,7 @@ export default function Component({params: {TemaId}}) {
               bordered
               fullWidth
               color="secondary"
-              placeholder="Escribe una comentario aquí"
+              placeholder="Escribe un comentario aquí"
               id="comentarioForo"
               value={texto} onValueChange={setTexto}
             />
