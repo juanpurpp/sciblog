@@ -38,11 +38,7 @@ const Componente = () => {
       {/* Primera columna con 3 divs en fila */}
       <div className="flex w-full mb-24">
         <div className="w-1/3 space-x-1">
-          <Link href="/perfil/eliminarCuenta">
-            <button className="p-2 rounded bg-red-500 hover:bg-red-700 text-white">
-              <TrashIcon className="h-5 w-5" />
-            </button>
-          </Link>
+
           <Link href="/perfil/editarPerfil">
             <button className="p-2 rounded bg-blue-500 hover:bg-blue-700 text-white">
               <PencilIcon className="h-5 w-5" />

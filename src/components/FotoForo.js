@@ -6,7 +6,7 @@ import { Button } from '@nextui-org/button';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-const Fotoforo = ({ className, nombre, description, idT, correo, usuarioCorreo }) => {
+const Fotoforo = ({ className, nombre, description, idT, correo, usuarioCorreo, id_usuario }) => {
   const [deleted, setDeleted] = useState(false);
 
   const forMutation = useMutation({

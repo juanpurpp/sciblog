@@ -23,6 +23,7 @@ const ForoPost = ({ className }) => {
                       idT={item.id}
                       correo={item.usuario_tema.email}
                       usuarioCorreo={session?.user?.email}
+                      id_usuario={item.usuario_tema.id}
                     />
             
               </div>

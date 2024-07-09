@@ -51,7 +51,7 @@ export default function Component({params}) {
       <div className="flex w-full">
         <div className="w-1/3">
           <div className="font-bold text-lg">
-            <Link className='hover:text-blue-400' href={`${window.location.origin}/perfil/${data.data.usuario_creador.id}`}>
+            <Link className='hover:text-blue-400' href={`/perfil/${data.data.usuario_creador.id}`}>
               {data.data.usuario_creador.nombre + ' ' +data.data.usuario_creador.apellido }
             </Link>
           </div>

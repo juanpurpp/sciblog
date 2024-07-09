@@ -11,7 +11,7 @@ const PostTema = ({id, className, nombre, contenido,usuario_tema}) => {
           <div className="relative w-full  ">
             <div className="flex flex-col w-full">
               <div className="w-full px-4 mt-4">
-              <FotoTema nombre={<strong>{usuario_tema.nombre+ ' ' +usuario_tema.apellido}</strong>} titulo={<strong>{nombre}</strong>} description={contenido} correo={usuario_tema.email} usuarioCorreo={session?.user?.email} id={id}/>
+              <FotoTema usuario_id={usuario_tema.id} nombre={<strong>{usuario_tema.nombre+ ' ' +usuario_tema.apellido}</strong>} titulo={<strong>{nombre}</strong>} description={contenido} correo={usuario_tema.email} usuarioCorreo={session?.user?.email} id={id}/>
               </div>  
             </div>  
           </div>
