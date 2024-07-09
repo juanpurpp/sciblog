@@ -13,7 +13,7 @@ export default function Component({ params }) {
   const [q, setQ] = useState(params.q);
   const searching = useQuery('search', async () => await Axios.get(`/estudios/buscar?q=${q}`))
   return (
-    <div className="bg-white p-8 w-full">
+    <div className="bg-background p-8 w-full">
       {/* Primera columna con 3 divs en fila */}
       <div className='flex flex-col w-fulljustify-center space-y-4 items-center'>
         <h1 className='font-semibold text-3xl'>Buscar</h1>
