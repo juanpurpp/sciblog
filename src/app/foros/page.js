@@ -2,7 +2,7 @@
 import {Button} from '@nextui-org/button'; 
 import ForoPost from '@/components/ForoPost';
 import {useRouter} from 'next/navigation'
-import SearchBar from '@/components/SearchBar';
+import BusquedaForo from '@/components/BusquedaForo';
 
 
 export default function Page() {
@@ -24,7 +24,7 @@ export default function Page() {
             <h1 className='text-xl font-semibold'>Temas</h1>
           </div>
           <div className='flex w-full justify-center items-start'>
-            <SearchBar className='w-full' placeholder="Buscar tema"/>
+            <BusquedaForo className='w-full' placeholder="Buscar tema"/>
           </div>
           <div className="flex w-full justify-end items-center mr-7 px-8">
             <Button color="primary" onClick={() => router.push('foros/FormuForo')}>Agregar nuevo tema</Button>
