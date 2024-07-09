@@ -6,6 +6,7 @@ export async function GET(req){
   try{
     const url = new URL(req.url)
     const nombre = url.searchParams.get("nombre") //toma el nombre que se busca de la url
+    console.log('name',nombre)
     const temas = await Foro.findByName({ nombre: nombre })
     const response = NextResponse.json({message: 'Foros encontrados correctamente', data: temas,}, {status: 200})
     return response
